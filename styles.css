@@ -1,0 +1,17 @@
+/* static/styles.css */
+.btn-custom {
+    background-color: #ff5733; /* Custom background color */
+    color: #ffffff;           /* Custom text color */
+    border: none;             /* Remove border */
+    padding: 10px 20px;       /* Add some padding */
+    font-size: 16px;          /* Increase font size */
+    border-radius: 5px;       /* Add border radius */
+}
+
+.btn-custom:hover {
+    background-color: #e74c3c; /* Darken background color on hover */
+    color: #ffffff;            /* Keep text color white */
+}
+.btn btn-danger{
+    color: aqua;
+}

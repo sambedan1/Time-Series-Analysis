@@ -1,0 +1,14 @@
+{% extends "layout1.html" %}
+{% block stuff %}
+
+<form method="post" action="{{ url_for('make_predict') }}" enctype="multipart/form-data">
+ <div class="mb-3">
+    <label for="csvFile" class="form-label">Upload CSV File(should have {{ text_boxes }} number of values):</label>
+    <input type="file" class="form-control" id="csvFile" name="csvFile" accept=".csv" required>
+     <button class="btn btn-outline-warning" type="submit">Predict</button>
+  </div>
+</form>
+    <form method="post" action="{{ url_for('home') }}" enctype="multipart/form-data">
+     <button class="btn btn-outline-light" type="submit">Back to home</button>
+</form>
+{% endblock %}

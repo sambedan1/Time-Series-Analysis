@@ -1,0 +1,33 @@
+{% extends "layout1.html" %}
+{% block stuff %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Metrics:</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <table class="table">
+            {% for key, value in Accuracy.items() %}
+            <thead>
+              <tr>
+                <th scope="col">{{ key }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ value['1'] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        
+    </tbody>
+</table>
+    <form method="post" action="{{ url_for('home') }}" enctype="multipart/form-data">
+    <button class="btn btn-outline-info" type="submit">Proceed to make predictions</button>
+    </form>
+
+{% endblock %}

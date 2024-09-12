@@ -1,0 +1,24 @@
+{% extends "layout1.html" %}
+{% block stuff %}
+  <form method="post" action="{{ url_for('make_predict') }}" enctype="multipart/form-data">
+    {% for text_box in range(text_boxes) %}
+<div class="mb-3">
+
+<label for="Day{{ text_box+1 }}" class="form-label">Enter data for the day {{ text_box+1 }}:</label>
+<input type="text"  name = "Day{{ text_box+1 }}" class="form-control" id="Day{{ text_box+1 }}" placeholder="Enter value" required>
+    <div class="invalid-feedback">
+      Please enter a value
+    </div>
+
+</div>
+
+{% endfor %}
+
+
+<button class="btn btn-outline-warning" type="submit">Predict</button>
+ </form>
+    </form>
+    <form method="post" action="{{ url_for('home') }}" enctype="multipart/form-data">
+     <button class="btn btn-outline-light" type="submit">Back to home</button>
+</form>
+{% endblock %}

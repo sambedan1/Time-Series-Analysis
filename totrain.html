@@ -1,0 +1,94 @@
+{% extends "layout1.html" %}
+{% block stuff %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <!-- <h5 class="dark">Train your model with data stored from the database:</h5>
+    <form method="post" action="{{ url_for('to_train') }}" enctype="multipart/form-data">
+        <div class ="btn-group">
+            Select starting timestamp:
+            <select name="selectedTimestamp" class="btn btn-danger dropdown-toggle">
+            <button type="submit" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+
+            </button>
+            <ul class="dropdown-menu">
+                
+    {% for value in data %}
+    <option value="{{ value }}" ><li>{{ value }}</li></option>
+    {% endfor %}
+</select>
+</ul>
+</div>
+</form>
+<form method="post" action="{{ url_for('to_train') }}" enctype="multipart/form-data">
+    <div class ="btn-group">
+        Select ending timestamp:
+        <select name="selectedTimestamp1" class="btn btn-danger dropdown-toggle">
+        <button type="submit" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+
+        </button>
+        <ul class="dropdown-menu">
+            
+{% for value in data %}
+<option value="{{ value }}" ><li>{{ value }}</li></option>
+{% endfor %}
+</select>
+</ul>
+</div>
+</form> -->
+
+    <form method="post" action="{{ url_for('to_train') }}" enctype="multipart/form-data">
+        <div class="btn-group">
+            <select name="selected_option" class="btn btn-danger dropdown-toggle">
+                <option value="" disabled selected>Select starting timestamp:</option>
+                {% for value in data %}
+                    <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+            </select>
+            <select name="selected_option1" class="btn btn-danger dropdown-toggle">
+                <option value="" disabled selected>Select ending timestamp:</option>
+                {% for value in data %}
+                    <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-danger">Submit</button>
+        </div>
+    </form>
+
+    <form method="post" action="{{ url_for('predict_results') }}" enctype="multipart/form-data">
+        <button class="btn btn-outline-info" type="submit">Check the training results</button>
+        </form>
+    <form method="post" action="{{ url_for('home') }}" enctype="multipart/form-data">
+            <button class="btn btn-outline-info" type="submit">Back to home</button>
+            </form>
+    
+
+    <!-- <form method="post" action="{{ url_for('to_train') }}" enctype="multipart/form-data">
+        <div class="btn-group">
+            <select name="selectedTimestamp" class="btn btn-danger dropdown-toggle">
+                <option value="" disabled selected>Select starting timestamp</option>
+                {% for value in data %}
+                    <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-danger">Submit</button>
+        </div>
+    </form>
+    
+         -->
+         <!-- I'm trying to add an infinite scroll functionality here to prevent the page from lagging-->
+<!-- <script type="text/javascript">
+    $(window).scroll(()=>{
+    var current_y = $(window).scrollTop();
+    var window_height = $(window).height();
+    var document_height = $(document).height();
+    if(current_y + window_height == document_height){
+        // console.log('bottom of the page');
+        // alert('End of the page');
+    }
+//    console.log('current_y:',current_y,'window_height:',window_height,'document_height',document_height);
+    });
+    function downloadContent(index,limit){
+        $.get('127.0.0.1:5000')
+    }
+</script> -->
+{% endblock %}

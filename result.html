@@ -1,0 +1,27 @@
+{%extends "layout1.html"%}
+{% block stuff %}
+<div class="mb-3">
+<h1 class="dark">Result</h1>
+    <h3 class="dark">The predicted value for the day {{ text_boxes+1 }} is:</h3>
+    
+        <p>{{ prediction_result[0] }}</p>
+<div id ='chart' class='chart'></div>
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+    var graphs = {{plot_html | safe}};
+    Plotly.plot('chart',graphs,{});
+  </script>   
+  <figcaption>An interactive plot of the various confidence levels for crude oil price</figcaption>       
+            <form method="post" action="{{ url_for('home') }}" enctype="multipart/form-data">
+
+            <div class="mb-3">
+                <button class="btn btn-outline-info" type="submit">Go to home</button>
+             </div>
+           </form>
+        </div>
+        <style>
+            #chart {
+              margin-left: 150px; 
+            }
+          </style>
+{% endblock %}

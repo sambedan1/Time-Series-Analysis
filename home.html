@@ -1,0 +1,44 @@
+{% extends "layout1.html" %}
+{% block stuff %}
+
+<form method="post" action="{{ url_for('home') }}" enctype="multipart/form-data">
+    <div class="btn-group">
+        <select name="themodel" class="btn btn-danger dropdown-toggle">
+            <option value="" disabled selected>Select a model</option>
+            {% for model in models %}
+                {% for modelname,value in model.items()%}
+                <option value="{{ modelname }}">{{ modelname }}</option>
+                {% endfor %}
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-danger">Submit</button>
+    </div>
+</form>
+<h4 class="dark"><b>To train a model, click on the button below:</b></h4>
+<form method="get" action="{{ url_for('to_train') }}" enctype="multipart/form-data">
+<button class="btn btn-outline-success" type="submit">Train a model</button>
+</form>
+
+    <h4 class="dark"><b>To forecast, select one of the following techniques to upload data for {{ text_boxes }} number of days:</b></h4>
+    <form method="post" action="{{ url_for('uploadpage') }}" enctype="multipart/form-data">
+    <button class="btn btn-outline-success" type="submit" onclick="onclick()">Upload a .csv file</button>
+    </form>
+    <h4 class="dark">OR</h4>
+    <form method="post" action="{{ url_for('modelpage') }}" enctype="multipart/form-data">
+    <button class="btn btn-outline-info" type="submit">Enter the values manually</button>
+    </form>
+
+    <script>
+        function onclick(){
+            
+                alert("Please select a model before proceeding!");
+            
+        }
+    document.addEventListener("DOMContentLoaded", function () {
+        var desiredModel = "{{ desiredModel }}";
+        if (desiredModel === 'None') {
+            alert("Please select a model before proceeding!");
+        }
+    });
+</script>
+{% endblock %}
